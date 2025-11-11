@@ -1,16 +1,10 @@
 import os
-import sys
-from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
-if str(ROOT_DIR) not in sys.path:
-    sys.path.append(str(ROOT_DIR))
-
-from frontend.aina import AinaError, ask_aina
+from services.aina_client import AinaError, ask_aina
 
 
 class ChatInput(BaseModel):
