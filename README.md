@@ -8,110 +8,192 @@
   <img src="https://img.shields.io/badge/Folium-Geospatial%20Maps-2E7D32?style=for-the-badge" alt="Folium" />
 </p>
 
-Proyecto ganador del **reto WiFi de UAB THE HACK! 2025**, desarrollado para analizar datos anonimizados de la red WiFi del campus y convertirlos en información visual, geoespacial e interactiva.
+Proyecto ganador del **reto WiFi de UAB THE HACK! 2025**, desarrollado para transformar datos anonimizados de la red WiFi del campus en información visual, geoespacial e interactiva.
 
-El proyecto combina procesamiento de datos, generación de mapas dinámicos, análisis de puntos de acceso, visualización temporal y un dashboard web con integración de IA mediante AINA.
-
----
-
-## 🚀 Resumen del proyecto
-
-El objetivo del proyecto era transformar grandes volúmenes de datos WiFi anonimizados en una herramienta útil para entender el comportamiento de la red del campus.
-
-A partir de datos de **puntos de acceso**, **clientes conectados**, métricas de salud, intensidad de señal y carga por zona, el sistema genera mapas interactivos que permiten visualizar la evolución temporal de la red.
-
-Además, el dashboard incluye un chatbot conectado a AINA para facilitar preguntas sobre los datos, el contexto del reto y posibles decisiones técnicas.
+La solución combina **procesamiento y agregación de datos**, conversión de coordenadas geográficas, generación de mapas temporales, análisis de puntos de acceso, un dashboard web y una integración con **AINA** para realizar consultas sobre el contexto y los datos disponibles.
 
 ---
 
-## 🧠 Qué aporta
+## 🚀 El proyecto
+
+El reto consistía en trabajar con grandes volúmenes de datos anonimizados de la red WiFi de la Universitat Autònoma de Barcelona y convertirlos en información que pudiera interpretarse visualmente.
+
+A partir de información sobre:
+
+* puntos de acceso;
+* clientes conectados;
+* métricas de salud de conexión;
+* intensidad de señal;
+* carga por punto de acceso;
+* posición geográfica;
+* evolución temporal;
+
+el sistema procesa y agrega los datos para generar **mapas interactivos con evolución temporal**.
+
+El resultado permite observar cómo cambia el comportamiento de la red según la zona y la hora, utilizando distintas métricas para representar su estado.
+
+El proyecto incorpora además un dashboard web con un chatbot conectado a **AINA**, utilizado para realizar consultas a partir del contexto preparado para el reto.
+
+---
+
+## 🏆 Resultado
+
+El proyecto fue desarrollado en equipo durante **UAB THE HACK! 2025** y resultó **ganador del reto WiFi**.
+
+La solución se centró en convertir información de red difícil de interpretar directamente en mapas, métricas y visualizaciones que permitieran explorar su comportamiento de una forma más accesible.
+
+---
+
+## 🧠 Funcionalidades principales
 
 * Visualización geoespacial de datos WiFi del campus.
-* Conversión de coordenadas UTM a latitud/longitud para mapas web.
+* Conversión de coordenadas UTM a latitud y longitud.
 * Mapas dinámicos con evolución temporal por hora.
-* Análisis de salud de conexión, señal y número de clientes por punto de acceso.
-* Backend con FastAPI para servir endpoints propios y conectar con AINA.
+* Análisis de salud media de conexión.
+* Análisis de intensidad media de señal.
+* Visualización de clientes conectados por punto de acceso.
+* Backend mediante FastAPI.
 * Frontend ligero en HTML, CSS y JavaScript.
-* Organización del dataset, scripts y documentación oficial del reto.
-* Flujo reproducible para regenerar mapas y datos filtrados localmente.
+* Integración con AINA mediante API.
+* Procesamiento y agregación de datos con Pandas.
+* Generación reproducible de mapas a partir del dataset original.
+* Scripts de ejecución para distintos entornos.
+
+---
+
+## 🏗️ Arquitectura general
+
+```text
+Dataset WiFi anonimizado
+        │
+        ▼
+Procesamiento y filtrado
+      Pandas
+        │
+        ▼
+Conversión geoespacial
+ PyProj · EPSG:25831
+           ↓
+       EPSG:4326
+        │
+        ▼
+Agregación temporal
+por AP · día · hora
+        │
+        ▼
+Generación de mapas
+Folium · TimestampedGeoJson
+        │
+        ├───────────────┐
+        ▼               ▼
+   Dashboard         Backend
+HTML/CSS/JS          FastAPI
+                        │
+                        ▼
+                      AINA
+```
 
 ---
 
 ## 🛠️ Stack utilizado
 
-| Área          | Tecnologías                                      |
-| ------------- | ------------------------------------------------ |
-| Backend       | Python · FastAPI · Uvicorn                       |
-| Frontend      | HTML · CSS · JavaScript                          |
-| Visualización | Folium · TimestampedGeoJson · OpenStreetMap      |
-| Datos         | Pandas · JSON · datasets anonimizados            |
-| Geoespacial   | PyProj · EPSG:25831 · EPSG:4326                  |
-| IA            | AINA API · contexto personalizado                |
-| Herramientas  | Bash · PowerShell · Git · entorno virtual Python |
-
----
-
-## 📁 Estructura del repositorio
-
-```txt
-.
-├── apps/
-│   ├── backend/             # FastAPI, cliente de AINA y endpoints propios
-│   └── frontend/            # Web estática, mapas y llamadas al backend
-├── data/
-│   ├── context/ai/          # Prompt base y archivos de contexto para el LLM
-│   ├── processed/rookie/    # Datos agregados listos para mapas
-│   └── raw/
-│       ├── anonymized_data/ # Dataset oficial anonimizado de la UAB
-│       └── snapshots/       # Muestras pequeñas para pruebas rápidas
-├── docs/hackathon-kit/      # Manuales, logos y materiales oficiales del reto
-├── packages/geolocation/    # Utilidades y ejemplos de visualización
-├── scripts/                 # Scripts de lanzamiento para bash y PowerShell
-├── main.py                  # Generación principal de mapas dinámicos
-└── .venv/                   # Entorno virtual local opcional
-```
+| Área                   | Tecnologías                                            |
+| ---------------------- | ------------------------------------------------------ |
+| Backend                | Python · FastAPI · Uvicorn                             |
+| Frontend               | HTML · CSS · JavaScript                                |
+| Visualización          | Folium · TimestampedGeoJson · OpenStreetMap            |
+| Procesamiento de datos | Pandas · NumPy · JSON                                  |
+| Geoespacial            | PyProj · EPSG:25831 · EPSG:4326                        |
+| IA                     | AINA API · contexto personalizado                      |
+| Herramientas           | Git · Bash · PowerShell · entornos virtuales de Python |
 
 ---
 
 ## 🗺️ Mapas generados
 
-El script principal `main.py` procesa los datos de puntos de acceso y clientes conectados para generar tres mapas dinámicos e interactivos en HTML.
+El script principal `main.py` procesa los datos de puntos de acceso y clientes conectados y genera tres mapas dinámicos e interactivos en HTML.
 
-| Archivo                       | Métrica principal         | Visualización                                        |
-| ----------------------------- | ------------------------- | ---------------------------------------------------- |
-| `mapa_health_dinamico.html`   | Salud media de conexión   | Círculos con gradiente de rojo a verde según calidad |
-| `mapa_signal_dinamico.html`   | Intensidad media de señal | Círculos coloreados según señal media en dBm         |
-| `mapa_clientes_dinamico.html` | Número de clientes por AP | Radio dinámico según carga por punto de acceso       |
+| Archivo                       | Métrica principal         | Visualización                                       |
+| ----------------------------- | ------------------------- | --------------------------------------------------- |
+| `mapa_health_dinamico.html`   | Salud media de conexión   | Círculos con gradiente según la calidad de conexión |
+| `mapa_signal_dinamico.html`   | Intensidad media de señal | Círculos coloreados según la señal media en dBm     |
+| `mapa_clientes_dinamico.html` | Número de clientes por AP | Radio dinámico según la carga del punto de acceso   |
 
-Todos los mapas incluyen un slider temporal y botón de reproducción para recorrer las horas del dataset.
+Los mapas incorporan un **slider temporal** y controles de reproducción para recorrer las distintas horas disponibles en el dataset.
 
 ---
 
-## ⚙️ Cómo funciona `main.py`
+## ⚙️ Procesamiento de los datos
 
-1. **Carga de datos**
+### 1. Carga
 
-   * `rookie_filtered_aps.json`: puntos de acceso con nombre y coordenadas UTM.
-   * `rookie_filtered_clients.json`: clientes conectados, timestamps, salud, señal y métricas asociadas.
+`main.py` trabaja principalmente con dos archivos procesados:
 
-2. **Conversión geoespacial**
+```text
+rookie_filtered_aps.json
+rookie_filtered_clients.json
+```
 
-   * Convierte coordenadas UTM `EPSG:25831` a latitud/longitud `EPSG:4326`.
+`rookie_filtered_aps.json` contiene información sobre los puntos de acceso y sus coordenadas.
 
-3. **Agregación temporal**
+`rookie_filtered_clients.json` contiene información relacionada con clientes conectados, timestamps, señal, salud de conexión y otras métricas utilizadas durante el análisis.
 
-   * Agrupa por punto de acceso, día y hora.
-   * Calcula métricas como `avg_health`, `avg_signal_db` y `num_clients_metricos`.
+### 2. Conversión geoespacial
 
-4. **Generación de mapas**
+Las coordenadas originales se convierten desde:
 
-   * Usa Folium y `TimestampedGeoJson`.
-   * Genera visualizaciones animadas con duración horaria.
-   * Centra la escena en la zona de Veterinaria del campus.
+```text
+EPSG:25831
+```
 
-5. **Salida**
+a:
 
-   * Genera tres archivos HTML interactivos listos para abrir o integrar en el frontend.
+```text
+EPSG:4326
+```
+
+para poder representarlas mediante latitud y longitud en mapas web.
+
+### 3. Agregación temporal
+
+Los datos se agrupan principalmente por:
+
+```text
+punto de acceso
+día
+hora
+```
+
+A partir de ellos se calculan métricas como:
+
+```text
+avg_health
+avg_signal_db
+num_clients_metricos
+```
+
+### 4. Generación de mapas
+
+La visualización utiliza:
+
+```text
+Folium
+TimestampedGeoJson
+```
+
+Esto permite representar la evolución de las métricas a lo largo del tiempo y reproducirlas de forma interactiva.
+
+### 5. Salida
+
+Se generan tres archivos HTML:
+
+```text
+mapa_health_dinamico.html
+mapa_signal_dinamico.html
+mapa_clientes_dinamico.html
+```
+
+Estos archivos pueden abrirse directamente en un navegador o integrarse en el frontend del proyecto.
 
 ---
 
@@ -119,37 +201,99 @@ Todos los mapas incluyen un slider temporal y botón de reproducción para recor
 
 ### Backend
 
-Backend desarrollado con FastAPI para:
+El backend está desarrollado con **FastAPI** y permite:
 
-* Comprobar el estado del servidor.
-* Recibir preguntas desde el frontend.
-* Construir contexto para la IA.
-* Enviar consultas a AINA.
-* Devolver respuestas al dashboard.
+* comprobar el estado del servidor;
+* recibir preguntas desde el frontend;
+* construir el contexto utilizado por la IA;
+* enviar consultas a AINA;
+* devolver las respuestas al dashboard.
 
-### Frontend
+Endpoints principales:
 
-Frontend ligero en HTML, CSS y JavaScript para:
+| Método | Ruta        | Descripción                                                 |
+| ------ | ----------- | ----------------------------------------------------------- |
+| `GET`  | `/health`   | Comprueba que el backend está activo                        |
+| `POST` | `/api/chat` | Recibe un mensaje y devuelve la respuesta del sistema de IA |
 
-* Mostrar el dashboard.
-* Integrar los mapas generados.
-* Enviar preguntas al backend.
-* Visualizar respuestas del chatbot AINA.
+El endpoint de chat recibe datos con la forma:
+
+```json
+{
+  "message": "<texto>"
+}
+```
+
+La variable `FRONTEND_ORIGINS` permite configurar los orígenes autorizados mediante CORS.
 
 ---
 
-## 📦 Archivos pesados fuera del repositorio
+### Frontend
 
-GitHub rechaza archivos superiores a 100 MB. Por eso, los datasets completos y los HTML generados no se versionan en el repositorio.
+El frontend utiliza **HTML, CSS y JavaScript**.
 
-| Carpeta                    | Archivos locales                                                                        | Cómo recuperarlos                                                   |
-| -------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `data/processed/rookie/`   | `rookie_filtered_aps.json`, `rookie_filtered_clients.json`                              | Generarlos con `docs/hackathon-kit/scripts/create_filtered_json.py` |
-| `docs/hackathon-kit/data/` | Copia de `rookie_filtered_*.json`                                                       | Descargar desde el enlace incluido en `onedrive.txt`                |
-| `frontend/`                | JSON filtrados y mapas HTML legacy                                                      | Generar localmente con `python frontend/main.py`                    |
-| `apps/frontend/maps/`      | `mapa_health_dinamico.html`, `mapa_signal_dinamico.html`, `mapa_clientes_dinamico.html` | Regenerar ejecutando `python main.py`                               |
+Se encarga de:
 
-Los archivos generados pueden pesar cientos de MB, por lo que deben mantenerse en local o compartirse mediante almacenamiento externo.
+* mostrar el dashboard;
+* integrar los mapas generados;
+* enviar consultas al backend;
+* visualizar las respuestas del chatbot conectado a AINA.
+
+---
+
+## 📁 Estructura del repositorio
+
+```text
+.
+├── apps/
+│   ├── backend/              # FastAPI, cliente de AINA y endpoints
+│   └── frontend/             # Dashboard, mapas y llamadas al backend
+│
+├── data/
+│   ├── context/
+│   │   └── ai/               # Prompt base y contexto utilizado por AINA
+│   │
+│   ├── processed/
+│   │   └── rookie/           # Datos procesados para generar los mapas
+│   │
+│   └── raw/
+│       ├── anonymized_data/  # Ubicación esperada del dataset original
+│       └── snapshots/        # Muestras pequeñas para pruebas
+│
+├── docs/
+│   └── hackathon-kit/        # Materiales y utilidades del reto
+│
+├── packages/
+│   └── geolocation/          # Utilidades de visualización geoespacial
+│
+├── scripts/                  # Scripts de ejecución
+├── main.py                   # Generador principal de mapas
+└── README.md
+```
+
+---
+
+## 📦 Dataset y reproducibilidad
+
+El **dataset original utilizado durante UAB THE HACK! 2025 no se distribuye mediante este repositorio**.
+
+Los datos pertenecen al contexto del reto y existen restricciones de distribución, por lo que para reproducir el procesamiento completo es necesario disponer previamente de acceso autorizado al dataset original.
+
+El repositorio conserva el código, estructura y scripts utilizados para procesar esos datos.
+
+Además, algunos de los archivos procesados y generados pueden alcanzar tamaños muy elevados, por lo que tampoco se mantienen versionados en Git.
+
+### Archivos no incluidos
+
+| Ubicación                | Archivos                                                    | Cómo obtenerlos                          |
+| ------------------------ | ----------------------------------------------------------- | ---------------------------------------- |
+| `data/processed/rookie/` | `rookie_filtered_aps.json` · `rookie_filtered_clients.json` | Generarlos a partir del dataset original |
+| `apps/frontend/maps/`    | Mapas HTML dinámicos                                        | Ejecutar `python main.py`                |
+| Otras salidas generadas  | JSON procesados y mapas                                     | Regenerarlos localmente                  |
+
+Los JSON procesados pueden alcanzar varios GB y algunos mapas HTML pueden ocupar cientos de MB.
+
+Por este motivo, el objetivo del repositorio es conservar **el código y el flujo de procesamiento**, no redistribuir los datos originales ni todos los artefactos generados.
 
 ---
 
@@ -157,10 +301,11 @@ Los archivos generados pueden pesar cientos de MB, por lo que deben mantenerse e
 
 * Python 3.10 o superior.
 * `pip`.
-* PowerShell 7+ en Windows o bash/zsh en macOS/Linux.
 * Navegador moderno.
-* Conexión a internet para cargar tiles de OpenStreetMap.
-* Variable `AINA_API_KEY` si se quiere usar un token propio.
+* Conexión a Internet para cargar los tiles de OpenStreetMap.
+* PowerShell 7+ en Windows o bash/zsh en macOS/Linux.
+* Acceso autorizado al dataset original para regenerar todos los datos.
+* `AINA_API_KEY` si se desea utilizar la integración con AINA mediante un token propio.
 
 Dependencias principales:
 
@@ -171,23 +316,36 @@ pip install numpy pytz python-dateutil tzdata requests
 
 ---
 
-## ⚡ Instalación rápida
+## ⚡ Instalación
+
+Clona el repositorio:
 
 ```bash
-git clone <este_repo>
+git clone <URL_DEL_REPOSITORIO>
 cd uab-the-hack-2025-wifi-analytics
-
-python -m venv .venv
-source .venv/bin/activate
-
-pip install -r apps/backend/requirements.txt
 ```
 
-En Windows:
+Crea un entorno virtual:
+
+```bash
+python -m venv .venv
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+### Windows
 
 ```powershell
-py -3 -m venv .venv
 .\.venv\Scripts\activate
+```
+
+Instala las dependencias:
+
+```bash
 pip install -r apps/backend/requirements.txt
 ```
 
@@ -195,28 +353,34 @@ pip install -r apps/backend/requirements.txt
 
 ## ▶️ Ejecución
 
-### Usando scripts
+### Mediante scripts
+
+Linux / macOS:
 
 ```bash
 ./scripts/run_backend.sh
 ./scripts/run_frontend.sh
 ```
 
-En PowerShell:
+Windows:
 
 ```powershell
 pwsh scripts/run_backend.ps1
 pwsh scripts/run_frontend.ps1
 ```
 
-### Modo manual
+---
+
+### Ejecución manual
+
+Inicia el backend:
 
 ```bash
 cd apps/backend
 uvicorn main:app --reload
 ```
 
-En otra terminal:
+En otra terminal, inicia el frontend:
 
 ```bash
 cd apps/frontend
@@ -225,56 +389,59 @@ python -m http.server 8001
 
 Después abre:
 
-```txt
+```text
 http://127.0.0.1:8001
 ```
 
-El frontend llama al backend en:
+El frontend utiliza el backend en:
 
-```txt
+```text
 http://127.0.0.1:8000/api/chat
 ```
 
 ---
 
-## 🗺️ Regenerar mapas localmente
+## 🗺️ Regenerar los mapas
 
-Los mapas HTML pueden pesar alrededor de 250 MB cada uno, por lo que no se suben a GitHub.
+Para generar los mapas es necesario disponer previamente de los datos procesados correspondientes.
 
-Para regenerarlos:
+Con el entorno preparado:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r apps/backend/requirements.txt
 python main.py
 ```
 
-Los archivos se generarán en:
+Se generarán:
 
-```txt
-apps/frontend/maps/
+```text
+apps/frontend/maps/mapa_health_dinamico.html
+apps/frontend/maps/mapa_signal_dinamico.html
+apps/frontend/maps/mapa_clientes_dinamico.html
 ```
 
-No los subas al repositorio. Mantenlos en local o compártelos mediante almacenamiento externo si hace falta.
+Estos archivos pueden alcanzar cientos de MB y no se versionan en el repositorio.
 
 ---
 
-## 🧪 Generar los JSON filtrados
+## 🧪 Generar los JSON procesados
 
-Los archivos `rookie_filtered_aps.json` y `rookie_filtered_clients.json` resumen el dataset bruto y pueden pesar entre 1 GB y 3 GB.
+Para generar:
 
-Para generarlos:
+```text
+rookie_filtered_aps.json
+rookie_filtered_clients.json
+```
 
-1. Descarga el dataset anonimizado oficial.
-2. Colócalo en:
+es necesario disponer de acceso autorizado al dataset original utilizado durante el reto.
 
-```txt
+Los datos deben situarse en:
+
+```text
 data/raw/anonymized_data/aps
 data/raw/anonymized_data/clients
 ```
 
-3. Ejecuta:
+Después puede ejecutarse:
 
 ```bash
 python docs/hackathon-kit/scripts/create_filtered_json.py \
@@ -285,21 +452,21 @@ python docs/hackathon-kit/scripts/create_filtered_json.py \
   --skip-combined
 ```
 
-En PowerShell puedes usar `^` en lugar de `\`, o ejecutarlo todo en una sola línea.
+Los archivos resultantes pueden alcanzar varios GB, por lo que no se recomienda versionarlos mediante Git.
 
 ---
 
-## 🤖 Uso del chatbot AINA
+## 🤖 Integración con AINA
 
-1. Ajusta el prompt base en:
+El proyecto incluye una integración con **AINA** mediante el backend.
 
-```txt
-data/context/ai/el_teu_arxiu.txt
+El contexto utilizado por el sistema puede configurarse desde:
+
+```text
+data/context/ai/
 ```
 
-2. Añade archivos de contexto adicionales en la misma carpeta si necesitas que AINA tenga más información.
-
-3. Define la variable de entorno:
+Para utilizar un token propio debe definirse:
 
 ```bash
 export AINA_API_KEY="tu_token"
@@ -311,65 +478,54 @@ En Windows PowerShell:
 $env:AINA_API_KEY="tu_token"
 ```
 
-4. Reinicia el backend para que recoja la variable.
+Después debe reiniciarse el backend para que recoja la variable de entorno.
 
-5. Lanza preguntas desde el frontend.
-
----
-
-## 🔌 API del backend
-
-| Método | Ruta        | Descripción                                                        |
-| ------ | ----------- | ------------------------------------------------------------------ |
-| GET    | `/health`   | Comprueba que el backend está activo                               |
-| POST   | `/api/chat` | Recibe `{ "message": "<texto>" }` y devuelve la respuesta de la IA |
-
-La variable `FRONTEND_ORIGINS` permite ampliar los orígenes autorizados para CORS.
+> La clave de API nunca debe añadirse directamente al repositorio.
 
 ---
 
 ## 🧯 Problemas habituales
 
-| Problema                   | Solución                                                          |
-| -------------------------- | ----------------------------------------------------------------- |
-| Mapa sin fondo             | Folium necesita internet para cargar los tiles de OpenStreetMap   |
-| Archivos demasiado grandes | Usa snapshots o genera los archivos localmente sin subirlos a Git |
-| Error de CORS              | Ajusta la variable `FRONTEND_ORIGINS`                             |
-| Faltan dependencias        | Instala las librerías dentro del entorno virtual                  |
-| No responde AINA           | Revisa `AINA_API_KEY` y reinicia el backend                       |
-
----
-
-## 🏁 Checklist antes de presentar
-
-* [ ] Activar el entorno virtual.
-* [ ] Instalar dependencias.
-* [ ] Definir `AINA_API_KEY` si se usa token propio.
-* [ ] Lanzar backend y frontend.
-* [ ] Validar `/health`.
-* [ ] Regenerar mapas con `python main.py` si hace falta.
-* [ ] Abrir los HTML generados.
-* [ ] Probar el chatbot desde el frontend.
-* [ ] Revisar que el dashboard y los mapas estén listos para la demo.
-
----
-
-## 🏆 Resultado
-
-Este proyecto fue desarrollado durante **UAB THE HACK! 2025** y resultó ganador del **reto WiFi**.
-
-El trabajo se centró en convertir datos anonimizados de red en mapas, métricas y visualizaciones útiles para entender mejor el comportamiento de conexión dentro del campus.
+| Problema                  | Posible solución                                                           |
+| ------------------------- | -------------------------------------------------------------------------- |
+| El mapa aparece sin fondo | Comprueba la conexión a Internet; OpenStreetMap necesita cargar los tiles  |
+| Faltan datos              | El dataset original y los archivos procesados completos no están incluidos |
+| Los mapas no existen      | Regenera los archivos ejecutando `python main.py`                          |
+| Error de CORS             | Revisa la configuración de `FRONTEND_ORIGINS`                              |
+| Faltan dependencias       | Instálalas dentro del entorno virtual                                      |
+| AINA no responde          | Revisa `AINA_API_KEY` y reinicia el backend                                |
 
 ---
 
 ## 👥 Equipo
 
-Proyecto desarrollado en equipo durante UAB THE HACK! 2025.
+Proyecto desarrollado **en equipo** durante **UAB THE HACK! 2025**.
+
+El repositorio recoge el trabajo realizado para el reto WiFi, incluyendo procesamiento de datos, visualización geoespacial, backend, frontend e integración con AINA.
 
 ---
 
-## 📌 Nota
+## 📌 Limitaciones
 
-Los datos originales pertenecen al contexto del reto y no se incluyen completamente en el repositorio por tamaño y restricciones de distribución.
+Este repositorio **no contiene el dataset original completo utilizado durante el hackathon**.
 
-Este repositorio mantiene la estructura, scripts y documentación necesarios para reproducir el flujo de trabajo de forma local.
+Por tanto, una clonación limpia del repositorio permite consultar el código y la arquitectura del proyecto, pero determinadas funcionalidades relacionadas con el procesamiento y la generación completa de mapas requieren disponer previamente de los datos originales.
+
+Asimismo, algunos archivos procesados y visualizaciones generadas se mantienen fuera de Git debido a su tamaño.
+
+---
+
+## 🔐 Datos y credenciales
+
+* El dataset original no se redistribuye mediante este repositorio.
+* No deben publicarse claves de AINA ni otras credenciales.
+* Los archivos generados de gran tamaño deben mantenerse fuera de Git.
+* El repositorio conserva principalmente el código, la estructura y la documentación necesarios para comprender y reproducir el flujo cuando se dispone de los datos correspondientes.
+
+---
+
+## 🏁 UAB THE HACK! 2025
+
+**Ganador del reto WiFi de UAB THE HACK! 2025.**
+
+Proyecto desarrollado para explorar cómo el procesamiento de datos y la visualización geoespacial pueden facilitar la interpretación de grandes volúmenes de información procedentes de una infraestructura WiFi real.
