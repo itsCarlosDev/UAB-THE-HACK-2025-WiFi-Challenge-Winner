@@ -15,10 +15,10 @@
   <body class="bg-light">
     <div class="container py-5">
       <header class="mb-5 text-center">
-        <p class="brand-badge mb-1">wifi uab · live insights</p>
-        <h1 class="display-5 fw-bold mb-3">WiFi UAB</h1>
+        <p class="brand-badge mb-1">UAB THE HACK · WiFi Analytics Demo</p>
+        <h1 class="display-5 fw-bold mb-3">Analitzador geoespacial WiFi</h1>
         <p class="text-muted lead">
-          Monitoratge en temps real de la qualitat i salut de la xarxa sense fils del campus.
+          Demo interactiva d'anàlisi geoespacial i temporal basada en dades sintètiques.
         </p>
       </header>
 
@@ -26,33 +26,33 @@
         <div class="row g-4">
           <div class="col-md-6">
             <div class="present-card h-100">
-              <p class="eyebrow">Objectius de la demo</p>
-              <h3 class="h4">Visibilitat intuïtiva per decisors</h3>
+              <p class="eyebrow">Objectius de la demo pública</p>
+              <h3 class="h4">Exploració visual del pipeline</h3>
               <ul class="list-unstyled mb-0">
-                <li>• Detectar zones amb cobertura feble en segons.</li>
-                <li>• Prioritzar incidències gràcies al nivell de <em>health</em>.</li>
-                <li>• Comunicar resultats en presentacions executives.</li>
+                <li>• Explorar la intensitat de senyal per AP fictici.</li>
+                <li>• Comparar el nivell de <em>health</em> entre APs de la demo.</li>
+                <li>• Recórrer l'evolució temporal de les observacions.</li>
               </ul>
             </div>
           </div>
           <div class="col-md-6">
             <div class="present-card h-100">
-              <p class="eyebrow">Dataset filtrat</p>
+              <p class="eyebrow">Dataset de demostració</p>
               <div class="row text-center">
                 <div class="col-6 mb-3">
-                  <p class="stat-value">2,333</p>
-                  <p class="stat-label">Snapshots d'APs</p>
+                  <p class="stat-value">3</p>
+                  <p class="stat-label">APs ficticis</p>
                 </div>
                 <div class="col-6 mb-3">
-                  <p class="stat-value">3,199</p>
-                  <p class="stat-label">Registres de clients</p>
+                  <p class="stat-value">15</p>
+                  <p class="stat-label">Observacions sintètiques</p>
                 </div>
                 <div class="col-12">
                   <p class="small text-muted mb-1">
-                    Període: Abril — Juliol 2025
+                    Data de la demo: 1 d'abril de 2025
                   </p>
                   <p class="small text-muted mb-0">
-                    Fonts: Access Points + Clients · WiFi UAB
+                    Font: dades sintètiques incloses al repositori
                   </p>
                 </div>
               </div>
@@ -62,7 +62,7 @@
       </section>
 
       <section>
-        <h2 class="h4 mb-3">Heatmaps i mapes dinàmics</h2>
+        <h2 class="h4 mb-3">Mapes dinàmics</h2>
         <div class="row g-4">
           <div class="col-md-4">
             <button
@@ -72,7 +72,7 @@
               data-bs-target="#signalModal"
             >
               <span class="section-label">Intensitat del camp</span>
-              <span class="section-caption">Heatmap de signal_db / cobertura</span>
+              <span class="section-caption">Evolució de signal_db per AP fictici</span>
             </button>
           </div>
           <div class="col-md-4">
@@ -83,7 +83,7 @@
               data-bs-target="#healthModal"
             >
               <span class="section-label">Health dels clients</span>
-              <span class="section-caption">Heatmap d'estat de dispositius</span>
+              <span class="section-caption">Evolució del health per AP fictici</span>
             </button>
           </div>
           <div class="col-md-4">
@@ -94,7 +94,7 @@
               data-bs-target="#clientsModal"
             >
               <span class="section-label">Càrrega de clients</span>
-              <span class="section-caption">Mapa interactiu de volum de connexions</span>
+              <span class="section-caption">Volum d'observacions per AP i hora</span>
             </button>
           </div>
         </div>
@@ -129,19 +129,19 @@
             type="button"
             class="btn btn-outline-secondary w-100 text-start prompt-template"
             id="prompt-1"
-            data-prompt-template="Quina és la senyal mitjana registrada i com es compara amb les setmanes anteriors?"
+            data-prompt-template="Quina és la intensitat mitjana de senyal de la demo?"
           >
             <span class="preset-tag">Prompt 1</span>
-            Quina és la senyal mitjana registrada?
+            Quina és la intensitat mitjana de senyal de la demo?
           </button>
           <button
             type="button"
             class="btn btn-outline-secondary w-100 text-start prompt-template"
             id="prompt-2"
-            data-prompt-template="Quin es el AP amb menys intensitat de camp?"
+            data-prompt-template="Quin AP fictici té la intensitat mitjana de senyal més baixa?"
           >
             <span class="preset-tag">Prompt 2</span>
-            Quin es el AP amb menys intensitat de camp?
+            Quin AP fictici té la intensitat mitjana de senyal més baixa?
           </button>
         </div>
       </section>
@@ -158,7 +158,7 @@
       <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-md-down">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="signalModalLabel">Heatmap d'intensitat del camp</h5>
+            <h5 class="modal-title" id="signalModalLabel">Mapa d'intensitat de senyal</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -185,7 +185,7 @@
       <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-md-down">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="healthModalLabel">Heatmap de health</h5>
+            <h5 class="modal-title" id="healthModalLabel">Mapa de health</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">

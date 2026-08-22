@@ -2,5 +2,8 @@ fastapi
 uvicorn[standard]
 pandas
 requests
-sqlmodel
 python-dotenv
+folium
+branca
+pyproj
+numpy

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "AP-DEMO-01",
+    "location": {
+      "x": 425180.444,
+      "y": 4594570.831,
+      "building_name": "Zona Demo A"
+    }
+  },
+  {
+    "name": "AP-DEMO-02",
+    "location": {
+      "x": 425300.444,
+      "y": 4594650.831,
+      "building_name": "Zona Demo B"
+    }
+  },
+  {
+    "name": "AP-DEMO-03",
+    "location": {
+      "x": 425410.444,
+      "y": 4594740.831,
+      "building_name": "Zona Demo C"
+    }
+  }
+]

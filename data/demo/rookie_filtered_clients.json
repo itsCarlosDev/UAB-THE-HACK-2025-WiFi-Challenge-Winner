@@ -1,0 +1,110 @@
+[
+  {
+    "date": "2025-04-01",
+    "hour": 9,
+    "associated_device_name": "AP-DEMO-01",
+    "health": 78,
+    "signal_db": -55
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 9,
+    "associated_device_name": "AP-DEMO-01",
+    "health": 82,
+    "signal_db": -58
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 9,
+    "associated_device_name": "AP-DEMO-02",
+    "health": 67,
+    "signal_db": -66
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 9,
+    "associated_device_name": "AP-DEMO-03",
+    "health": 55,
+    "signal_db": -73
+  },
+
+  {
+    "date": "2025-04-01",
+    "hour": 12,
+    "associated_device_name": "AP-DEMO-01",
+    "health": 91,
+    "signal_db": -51
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 12,
+    "associated_device_name": "AP-DEMO-01",
+    "health": 88,
+    "signal_db": -53
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 12,
+    "associated_device_name": "AP-DEMO-02",
+    "health": 76,
+    "signal_db": -60
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 12,
+    "associated_device_name": "AP-DEMO-02",
+    "health": 74,
+    "signal_db": -62
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 12,
+    "associated_device_name": "AP-DEMO-03",
+    "health": 63,
+    "signal_db": -68
+  },
+
+  {
+    "date": "2025-04-01",
+    "hour": 15,
+    "associated_device_name": "AP-DEMO-01",
+    "health": 83,
+    "signal_db": -56
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 15,
+    "associated_device_name": "AP-DEMO-02",
+    "health": 70,
+    "signal_db": -64
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 15,
+    "associated_device_name": "AP-DEMO-03",
+    "health": 58,
+    "signal_db": -72
+  },
+
+  {
+    "date": "2025-04-01",
+    "hour": 18,
+    "associated_device_name": "AP-DEMO-01",
+    "health": 72,
+    "signal_db": -61
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 18,
+    "associated_device_name": "AP-DEMO-02",
+    "health": 61,
+    "signal_db": -69
+  },
+  {
+    "date": "2025-04-01",
+    "hour": 18,
+    "associated_device_name": "AP-DEMO-03",
+    "health": 48,
+    "signal_db": -78
+  }
+]

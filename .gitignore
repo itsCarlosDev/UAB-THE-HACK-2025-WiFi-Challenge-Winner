@@ -1,10 +1,36 @@
+# Python
 venv/
 .venv/
 __pycache__/
+*.py[cod]
+.pytest_cache/
+
+# OS / IDE
 .DS_Store
 .vscode/
+.idea/
+
+# Environment variables / credentials
+.env
+.env.*
+!.env.example
+aina_key.md
+secrets/
+*.pem
+*.key
+
+# Generated frontend maps
 apps/frontend/maps/*.html
-data/processed/rookie/rookie_filtered_*.json
-docs/hackathon-kit/data/rookie_filtered_*.json
-frontend/rookie_filtered_*.json
 frontend/*.html
+
+# Processed datasets
+data/processed/rookie/rookie_filtered_*.json
+frontend/rookie_filtered_*.json
+docs/hackathon-kit/data/rookie_filtered_*.json
+
+# UAB dataset - DO NOT DISTRIBUTE
+data/raw/anonymized_data/
+data/raw/snapshots/
+
+# Other generated/local data
+*.log
