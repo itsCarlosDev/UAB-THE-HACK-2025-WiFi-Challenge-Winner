@@ -1,0 +1,110 @@
+CONTEXT DE DEMOSTRACIÓ — ANÀLISI WiFi
+
+Aquest fitxer conté exclusivament informació derivada de la demo sintètica
+inclosa al repositori públic.
+
+Les dades originals utilitzades durant UAB THE HACK! 2025 no es distribueixen
+en aquest repositori.
+
+Les dades següents no representen l'estat ni la configuració real de la xarxa
+WiFi de la Universitat Autònoma de Barcelona.
+
+
+DATASET DE DEMOSTRACIÓ
+
+Data de la demo:
+- 2025-04-01
+
+Punts d'accés ficticis:
+- AP-DEMO-01
+- AP-DEMO-02
+- AP-DEMO-03
+
+Nombre total d'observacions:
+- 15
+
+Franges horàries:
+- 09:00
+- 12:00
+- 15:00
+- 18:00
+
+
+ACTIVITAT PER FRANJA HORÀRIA
+
+- 09:00: 4 observacions
+- 12:00: 5 observacions
+- 15:00: 3 observacions
+- 18:00: 3 observacions
+
+La franja amb més activitat de la demo és les 12:00, amb 5 observacions.
+
+
+ACTIVITAT PER PUNT D'ACCÉS
+
+- AP-DEMO-01: 6 observacions
+- AP-DEMO-02: 5 observacions
+- AP-DEMO-03: 4 observacions
+
+AP-DEMO-01 és el punt d'accés amb més observacions de la demo.
+
+
+MÈTRIQUES GLOBALS
+
+Health mitjà:
+- 71,07
+
+Intensitat mitjana de senyal:
+- -63,07 dBm
+
+
+MÈTRIQUES PER PUNT D'ACCÉS
+
+AP-DEMO-01:
+- 6 observacions
+- health mitjà: 82,33
+- senyal mitjà: -55,67 dBm
+
+AP-DEMO-02:
+- 5 observacions
+- health mitjà: 69,60
+- senyal mitjà: -64,20 dBm
+
+AP-DEMO-03:
+- 4 observacions
+- health mitjà: 56,00
+- senyal mitjà: -72,75 dBm
+
+
+INTERPRETACIÓ DE LA DEMO
+
+Dins d'aquest conjunt sintètic:
+
+- AP-DEMO-01 té el health mitjà més alt.
+- AP-DEMO-01 té també el senyal mitjà menys negatiu.
+- AP-DEMO-03 té el health mitjà més baix.
+- AP-DEMO-03 té la intensitat mitjana de senyal més baixa.
+- Les 12:00 és la franja amb més observacions.
+
+Aquestes comparacions només descriuen la demo sintètica.
+
+
+PREGUNTES QUE ES PODEN RESPONDRE AMB AQUEST CONTEXT
+
+- Quin AP fictici té més activitat?
+- Quina franja horària té més observacions?
+- Quin AP té el health mitjà més baix?
+- Quin AP presenta la intensitat mitjana de senyal més baixa?
+- Quina és la intensitat mitjana de senyal de la demo?
+- Quin és el health mitjà de la demo?
+
+
+LIMITACIONS
+
+El context només conté una demo sintètica petita.
+
+No hi ha dades suficients per comparar setmanes, mesos, bandes WiFi, sistemes
+operatius, SSID, dispositius únics o l'estat real de la infraestructura UAB.
+
+Si una pregunta requereix informació que no apareix en aquest context,
+l'assistent ha d'indicar que aquesta informació no està disponible.
